@@ -31,13 +31,16 @@ let s:light_red = { 'gui': '#ff7e7e', 'cterm': 203 }
 let s:red = { 'gui': '#ff5370', 'cterm': 203 }
 let s:dark_red = { 'gui': '#e20000', 'cterm': 203 }
 let s:orange = { 'gui': '#ff8e0c', 'cterm': 209 }
+let s:dark_orange = { 'gui': '#c96f00', 'cterm': 209 }
 let s:light_yellow = { 'gui': '#fff672', 'cterm': 10 }
 let s:yellow = { 'gui': '#ffcb6b', 'cterm': 11 }
 let s:light_green = { 'gui': '#3eff7b', 'cterm': 2 }
 let s:green = { 'gui': '#c3e88d', 'cterm': 2 }
 let s:dark_green = { 'gui': '#67d745', 'cterm': 4 }
 let s:cyan = { 'gui': '#89ddff', 'cterm': 117 }
+let s:dark_cyan = { 'gui': '#558a9f', 'cterm': 117 }
 let s:blue = { 'gui': '#82aaff', 'cterm': 111 }
+let s:dark_blue = { 'gui': '#3a56a2', 'cterm': 111 }
 let s:paleblue = { 'gui': '#b2ccd6', 'cterm': 152 }
 let s:purple = { 'gui': '#c792ea', 'cterm': 176 }
 let s:brown = { 'gui': '#d16d60', 'cterm': 137 }
@@ -196,10 +199,14 @@ hi link gitcommitSelectedArrow gitcommitSelectedFile
 hi link gitcommitUnmergedArrow gitcommitUnmergedFile
 
 
-call s:SetHighlight('LspDiagnosticsVirtualTextError', s:dark_red, '', '')
-call s:SetHighlight('LspDiagnosticsVirtualTextWarning', s:orange, '', '')
-call s:SetHighlight('LspDiagnosticsVirtualTextInformation', s:blue, '', '')
-call s:SetHighlight('LspDiagnosticsVirtualTextHint', s:cyan, '', '')
+call s:SetHighlight('LspDiagnosticsVirtualTextError', s:dark_red, '', 'bold,italic')
+call s:SetHighlight('LspDiagnosticsVirtualTextWarning', s:dark_orange, '', 'bold,italic')
+call s:SetHighlight('LspDiagnosticsVirtualTextInformation', s:dark_blue, '', 'bold,italic')
+call s:SetHighlight('LspDiagnosticsVirtualTextHint', s:dark_cyan, '', 'bold,italic')
+call s:SetHighlight('LspDiagnosticsDefaultError', s:dark_red, '', '')
+call s:SetHighlight('LspDiagnosticsDefaultWarning', s:orange, '', '')
+call s:SetHighlight('LspDiagnosticsDefaultInformation', s:blue, '', '')
+call s:SetHighlight('LspDiagnosticsDefaultHint', s:cyan, '', '')
 
 " TS (Treesitter) colors
 

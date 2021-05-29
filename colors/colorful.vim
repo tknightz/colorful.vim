@@ -37,10 +37,12 @@ let s:yellow = { 'gui': '#ffcb6b', 'cterm': 11 }
 let s:light_green = { 'gui': '#3eff7b', 'cterm': 2 }
 let s:green = { 'gui': '#c3e88d', 'cterm': 2 }
 let s:dark_green = { 'gui': '#67d745', 'cterm': 4 }
+let s:lime = { 'gui': '#c6ff00', 'cterm': 4 }
 let s:cyan = { 'gui': '#89ddff', 'cterm': 117 }
-let s:dark_cyan = { 'gui': '#558a9f', 'cterm': 117 }
+let s:dark_cyan = { 'gui': '#3c7d87', 'cterm': 117 }
 let s:blue = { 'gui': '#82aaff', 'cterm': 111 }
 let s:dark_blue = { 'gui': '#3a56a2', 'cterm': 111 }
+let s:indigo = { 'gui': '#3d5afe', 'cterm': 111 }
 let s:paleblue = { 'gui': '#b2ccd6', 'cterm': 152 }
 let s:purple = { 'gui': '#c792ea', 'cterm': 176 }
 let s:brown = { 'gui': '#d16d60', 'cterm': 137 }
@@ -220,23 +222,23 @@ call s:SetHighlight('TSPunctSpecial', s:yellow, '', 'bold')
 call s:SetHighlight('TSConstant', s:orange, '', '')
 call s:SetHighlight('TSConstBuiltin', s:red, '', 'bold')
 call s:SetHighlight('TSConstMacro', s:green, '', '')
-call s:SetHighlight('TSString', s:blue, '', '')
+call s:SetHighlight('TSString', s:green, '', '')
 call s:SetHighlight('TSStringRegex', s:orange, '', '')
 call s:SetHighlight('TSStringEscape', s:orange, '', '')
 call s:SetHighlight('TSCharacter', s:orange, '', '')
 call s:SetHighlight('TSNumber', s:cyan, '', '')
 call s:SetHighlight('TSBoolean', s:cyan, '', '')
-call s:SetHighlight('TSFloat', s:cyan, '', '')
-call s:SetHighlight('TSAnnotation', s:pink, '', '')
-call s:SetHighlight('TSAttribute', s:pink, '', '')
-call s:SetHighlight('TSNamespace', s:pink, '', '')
+call s:SetHighlight('TSFloat', s:orange, '', '')
+call s:SetHighlight('TSAnnotation', s:yellow, '', '')
+call s:SetHighlight('TSAttribute', s:yellow, '', '')
+call s:SetHighlight('TSNamespace', s:yellow, '', '')
 
 
 " Functions
 call s:SetHighlight('TSFuncBuiltin', s:purple, '', 'bold,italic')
 call s:SetHighlight('TSFunction', s:yellow, '', 'bold')
 call s:SetHighlight('TSFuncMacro', s:purple, '', '')
-call s:SetHighlight('TSParameter', s:orange, '', 'italic')
+call s:SetHighlight('TSParameter', s:blue, '', 'italic')
 call s:SetHighlight('TSParameterReference', s:blue, '', '')
 call s:SetHighlight('TSMethod', s:light_green, '', 'bold,italic')
 call s:SetHighlight('TSField', s:orange, '', 'italic')
@@ -244,13 +246,13 @@ call s:SetHighlight('TSProperty', s:yellow, '', 'bold')
 call s:SetHighlight('TSConstructor', s:light_red, '', 'bold')
 
 " Keywords
-call s:SetHighlight('TSConditional', s:orange, '', 'italic')
-call s:SetHighlight('TSRepeat', s:orange, '', 'italic')
+call s:SetHighlight('TSConditional', s:purple, '', 'italic')
+call s:SetHighlight('TSRepeat', s:purple, '', 'italic')
 call s:SetHighlight('TSLabel', s:green, '', '')
 call s:SetHighlight('TSKeyword', s:purple, '', 'italic')
 call s:SetHighlight('TSKeywordFunction', s:purple, '', 'italic')
 call s:SetHighlight('TSKeywordOperator', s:yellow, '', 'bold')
-call s:SetHighlight('TSOperator', s:orange, '', '')
+call s:SetHighlight('TSOperator', s:lime, '', '')
 call s:SetHighlight('TSException', s:orange, '', '')
 call s:SetHighlight('TSType', s:light_yellow, '', '')
 call s:SetHighlight('TSTypeBuiltin', s:blue, '', 'bold')

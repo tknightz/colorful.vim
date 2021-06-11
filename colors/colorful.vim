@@ -30,13 +30,16 @@ let s:black = { 'gui': '#000000', 'cterm': 232 }
 let s:light_red = { 'gui': '#ff7e7e', 'cterm': 203 }
 let s:red = { 'gui': '#ff5370', 'cterm': 203 }
 let s:dark_red = { 'gui': '#e20000', 'cterm': 203 }
+let s:darkest_red = { 'gui': '#8B0000', 'cterm': 203 }
 let s:orange = { 'gui': '#ff8e0c', 'cterm': 209 }
 let s:dark_orange = { 'gui': '#c96f00', 'cterm': 209 }
+let s:darkest_orange = { 'gui': '#925000', 'cterm': 209 }
 let s:light_yellow = { 'gui': '#fff672', 'cterm': 10 }
 let s:yellow = { 'gui': '#ffcb6b', 'cterm': 11 }
 let s:light_green = { 'gui': '#3eff7b', 'cterm': 2 }
 let s:green = { 'gui': '#c3e88d', 'cterm': 2 }
 let s:dark_green = { 'gui': '#67d745', 'cterm': 4 }
+let s:darkest_green = { 'gui': '#366F23', 'cterm': 4 }
 let s:lime = { 'gui': '#c6ff00', 'cterm': 4 }
 let s:cyan = { 'gui': '#89ddff', 'cterm': 117 }
 let s:dark_cyan = { 'gui': '#3c7d87', 'cterm': 117 }
@@ -118,10 +121,16 @@ call s:SetHighlight('CursorColumn', '', s:line_highlight, '')
 call s:SetHighlight('CursorLine', '', s:line_highlight, '')
 call s:SetHighlight('CursorLineNr', s:yellow, '', '')
 call s:SetHighlight('Directory', s:blue, '', '')
-call s:SetHighlight('DiffAdd', s:green, s:bg, '')
-call s:SetHighlight('DiffDelete', s:red, s:bg, '')
-call s:SetHighlight('DiffChange', s:yellow, s:bg, '')
-call s:SetHighlight('DiffText', s:orange, s:bg, '')
+
+call s:SetHighlight('gitDiffAdd', s:green, s:bg, '')
+call s:SetHighlight('gitDiffDelete', s:red, s:bg, '')
+call s:SetHighlight('gitDiffChange', s:yellow, s:bg, '')
+"
+call s:SetHighlight('DiffAdd', s:bg, s:darkest_green, '')
+call s:SetHighlight('DiffDelete', s:fg, s:darkest_red, '')
+call s:SetHighlight('DiffChange', s:bg, s:darkest_orange, '')
+call s:SetHighlight('DiffText', s:bg, s:orange, '')
+
 call s:SetHighlight('ErrorMsg', s:bg, s:red, 'bold')
 call s:SetHighlight('FoldColumn', s:line_numbers, s:bg, '')
 call s:SetHighlight('Folded', s:brown, s:bg, 'bold')
@@ -176,12 +185,12 @@ call s:SetHighlight('Error', s:bg, s:red, '')
 call s:SetHighlight('Todo', s:orange, s:bg, 'italic')
 
 " Legacy groups for official git.vim and diff.vim syntax
-hi! link diffFile DiffAdd
-hi! link diffNewFile DiffDelete
-hi! link diffAdded DiffAdd
-hi! link diffChanged DiffChange
-hi! link diffLine DiffChange
-hi! link diffRemoved DiffDelete
+hi! link diffFile gitDiffAdd
+hi! link diffNewFile gitDiffDelete
+hi! link diffAdded gitDiffAdd
+hi! link diffChanged gitDiffChange
+hi! link diffLine gitDiffChange
+hi! link diffRemoved gitDiffDelete
 
 " Git Commit Messages
 call s:SetHighlight('gitcommitHeader', s:purple, '', '')
@@ -242,7 +251,7 @@ call s:SetHighlight('TSParameter', s:blue, '', 'italic')
 call s:SetHighlight('TSParameterReference', s:blue, '', '')
 call s:SetHighlight('TSMethod', s:light_green, '', 'bold,italic')
 call s:SetHighlight('TSField', s:orange, '', 'italic')
-call s:SetHighlight('TSProperty', s:yellow, '', 'bold')
+call s:SetHighlight('TSProperty', s:pink, '', 'bold')
 call s:SetHighlight('TSConstructor', s:light_red, '', 'bold')
 
 " Keywords

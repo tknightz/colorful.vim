@@ -14,6 +14,7 @@ endif
 let g:colors_name = 'colorful'
 let g:colorful_italic = get(g:, 'colorful_italic', 1)
 let g:colorful_transparent = get(g:, 'colorful_transparent', 0)
+let g:colorful_dark = get(g:, 'colorful_dark', 1)
 
 " Colors scheme
 let s:bg = { 'gui': '#121212', 'cterm': 232 }
@@ -30,14 +31,24 @@ let s:black = { 'gui': '#000000', 'cterm': 232 }
 let s:light_red = { 'gui': '#ff7e7e', 'cterm': 203 }
 let s:red = { 'gui': '#ff5370', 'cterm': 203 }
 let s:dark_red = { 'gui': '#e20000', 'cterm': 203 }
+let s:darkest_red = { 'gui': '#8B0000', 'cterm': 203 }
 let s:orange = { 'gui': '#ff8e0c', 'cterm': 209 }
+let s:dark_orange = { 'gui': '#c96f00', 'cterm': 209 }
+let s:darkest_orange = { 'gui': '#925000', 'cterm': 209 }
 let s:light_yellow = { 'gui': '#fff672', 'cterm': 10 }
 let s:yellow = { 'gui': '#ffcb6b', 'cterm': 11 }
 let s:light_green = { 'gui': '#3eff7b', 'cterm': 2 }
 let s:green = { 'gui': '#c3e88d', 'cterm': 2 }
 let s:dark_green = { 'gui': '#67d745', 'cterm': 4 }
+let s:pmenusel_bg = s:dark_green
+let s:pmenusel_fg = s:bg
+let s:darkest_green = { 'gui': '#366F23', 'cterm': 4 }
+let s:lime = { 'gui': '#c6ff00', 'cterm': 4 }
 let s:cyan = { 'gui': '#89ddff', 'cterm': 117 }
+let s:dark_cyan = { 'gui': '#3c7d87', 'cterm': 117 }
 let s:blue = { 'gui': '#82aaff', 'cterm': 111 }
+let s:dark_blue = { 'gui': '#3a56a2', 'cterm': 111 }
+let s:indigo = { 'gui': '#3d5afe', 'cterm': 111 }
 let s:paleblue = { 'gui': '#b2ccd6', 'cterm': 152 }
 let s:purple = { 'gui': '#c792ea', 'cterm': 176 }
 let s:brown = { 'gui': '#d16d60', 'cterm': 137 }
@@ -106,6 +117,28 @@ if (g:colorful_transparent == 1)
   let s:bg = { 'gui': 'none', 'cterm': 'none' }
 endif
 
+if (g:colorful_dark == 0)
+  let s:bg = { 'gui': '#ECECEC', 'cterm': 255}
+  let s:fg = { 'gui': '#000000', 'cterm': 232 }
+  let s:dark_green = { 'gui': '#4A9641', 'cterm': 235 } 
+  let s:light_green = { 'gui': '#08C35C', 'cterm': 2 }
+  let s:green = s:dark_green
+  let s:light_blue = s:dark_blue
+  let s:blue = s:dark_blue
+  let s:light_red = s:dark_red
+  let s:cyan = s:dark_cyan
+  let s:yellow = s:orange
+  let s:line_highlight = { 'gui': '#c6c6c6', 'cterm': 235 }
+  let s:pmenusel_bg = s:line_highlight
+  let s:pmenusel_fg = s:fg
+  let s:selection = { 'gui': '#D3D3D3', 'cterm': 235 }
+  let s:purple = { 'gui': '#B027AE', 'cterm': 55 }
+  let s:lime = { 'gui': '#96BC00', 'cterm': 4 }
+  let s:dark_yellow = { 'gui': '#D09332', 'cterm': 11 }
+  let s:yellow = s:dark_yellow
+  let s:light_yellow = s:dark_yellow
+endif
+
 
 call s:SetHighlight('ColorColumn', '', s:invisibles, '')
 call s:SetHighlight('Cursor', s:bg, s:caret, '')
@@ -113,10 +146,16 @@ call s:SetHighlight('CursorColumn', '', s:line_highlight, '')
 call s:SetHighlight('CursorLine', '', s:line_highlight, '')
 call s:SetHighlight('CursorLineNr', s:yellow, '', '')
 call s:SetHighlight('Directory', s:blue, '', '')
-call s:SetHighlight('DiffAdd', s:green, s:bg, '')
-call s:SetHighlight('DiffDelete', s:red, s:bg, '')
-call s:SetHighlight('DiffChange', s:yellow, s:bg, '')
-call s:SetHighlight('DiffText', s:orange, s:bg, '')
+
+call s:SetHighlight('gitDiffAdd', s:green, s:bg, '')
+call s:SetHighlight('gitDiffDelete', s:red, s:bg, '')
+call s:SetHighlight('gitDiffChange', s:yellow, s:bg, '')
+"
+call s:SetHighlight('DiffAdd', s:bg, s:darkest_green, '')
+call s:SetHighlight('DiffDelete', s:fg, s:darkest_red, '')
+call s:SetHighlight('DiffChange', s:bg, s:darkest_orange, '')
+call s:SetHighlight('DiffText', s:bg, s:orange, '')
+
 call s:SetHighlight('ErrorMsg', s:bg, s:red, 'bold')
 call s:SetHighlight('FoldColumn', s:line_numbers, s:bg, '')
 call s:SetHighlight('Folded', s:brown, s:bg, 'bold')
@@ -127,12 +166,12 @@ call s:SetHighlight('MoreMsg', s:green, '', '')
 call s:SetHighlight('NonText', s:comments, '', '')
 call s:SetHighlight('Normal', s:fg, s:bg, '')
 call s:SetHighlight('Pmenu', s:fg, s:selection, '')
-call s:SetHighlight('PmenuSel', s:bg, s:dark_green, '')
+call s:SetHighlight('PmenuSel', s:pmenusel_fg, s:pmenusel_bg, '')
 call s:SetHighlight('PmenuSbar', '', s:selection, '')
 call s:SetHighlight('PmenuThumb', '', s:comments, '')
 call s:SetHighlight('Question', s:blue, '', '')
-call s:SetHighlight('IncSearch', s:white, s:comments, 'none')
-call s:SetHighlight('Search', s:white, s:comments, 'none')
+call s:SetHighlight('IncSearch', s:white, s:red, 'none')
+call s:SetHighlight('Search', s:white, s:red, 'none')
 call s:SetHighlight('SignColumn', s:fg, s:bg, '')
 call s:SetHighlight('SpecialKey', s:comments, '', '')
 call s:SetHighlight('SpellCap', s:blue, '', 'undercurl')
@@ -171,12 +210,12 @@ call s:SetHighlight('Error', s:bg, s:red, '')
 call s:SetHighlight('Todo', s:orange, s:bg, 'italic')
 
 " Legacy groups for official git.vim and diff.vim syntax
-hi! link diffFile DiffAdd
-hi! link diffNewFile DiffDelete
-hi! link diffAdded DiffAdd
-hi! link diffChanged DiffChange
-hi! link diffLine DiffChange
-hi! link diffRemoved DiffDelete
+hi! link diffFile gitDiffAdd
+hi! link diffNewFile gitDiffDelete
+hi! link diffAdded gitDiffAdd
+hi! link diffChanged gitDiffChange
+hi! link diffLine gitDiffChange
+hi! link diffRemoved gitDiffDelete
 
 " Git Commit Messages
 call s:SetHighlight('gitcommitHeader', s:purple, '', '')
@@ -196,16 +235,20 @@ hi link gitcommitSelectedArrow gitcommitSelectedFile
 hi link gitcommitUnmergedArrow gitcommitUnmergedFile
 
 
-call s:SetHighlight('LspDiagnosticsVirtualTextError', s:dark_red, '', '')
-call s:SetHighlight('LspDiagnosticsVirtualTextWarning', s:orange, '', '')
-call s:SetHighlight('LspDiagnosticsVirtualTextInformation', s:blue, '', '')
-call s:SetHighlight('LspDiagnosticsVirtualTextHint', s:cyan, '', '')
+call s:SetHighlight('LspDiagnosticsVirtualTextError', s:dark_red, '', 'bold,italic')
+call s:SetHighlight('LspDiagnosticsVirtualTextWarning', s:dark_orange, '', 'bold,italic')
+call s:SetHighlight('LspDiagnosticsVirtualTextInformation', s:dark_blue, '', 'bold,italic')
+call s:SetHighlight('LspDiagnosticsVirtualTextHint', s:dark_cyan, '', 'bold,italic')
+call s:SetHighlight('LspDiagnosticsDefaultError', s:dark_red, '', '')
+call s:SetHighlight('LspDiagnosticsDefaultWarning', s:orange, '', '')
+call s:SetHighlight('LspDiagnosticsDefaultInformation', s:blue, '', '')
+call s:SetHighlight('LspDiagnosticsDefaultHint', s:cyan, '', '')
 
 " TS (Treesitter) colors
 
 " Misc
 call s:SetHighlight('TSError', s:red, '', '')
-call s:SetHighlight('TSPunctDelimiter', s:white, '', '')
+call s:SetHighlight('TSPunctDelimiter', s:fg, '', '')
 call s:SetHighlight('TSPunctBracket', s:yellow, '', 'bold')
 call s:SetHighlight('TSPunctSpecial', s:yellow, '', 'bold')
 
@@ -213,37 +256,37 @@ call s:SetHighlight('TSPunctSpecial', s:yellow, '', 'bold')
 call s:SetHighlight('TSConstant', s:orange, '', '')
 call s:SetHighlight('TSConstBuiltin', s:red, '', 'bold')
 call s:SetHighlight('TSConstMacro', s:green, '', '')
-call s:SetHighlight('TSString', s:blue, '', '')
+call s:SetHighlight('TSString', s:green, '', '')
 call s:SetHighlight('TSStringRegex', s:orange, '', '')
 call s:SetHighlight('TSStringEscape', s:orange, '', '')
 call s:SetHighlight('TSCharacter', s:orange, '', '')
 call s:SetHighlight('TSNumber', s:cyan, '', '')
 call s:SetHighlight('TSBoolean', s:cyan, '', '')
-call s:SetHighlight('TSFloat', s:cyan, '', '')
-call s:SetHighlight('TSAnnotation', s:pink, '', '')
-call s:SetHighlight('TSAttribute', s:pink, '', '')
-call s:SetHighlight('TSNamespace', s:pink, '', '')
+call s:SetHighlight('TSFloat', s:orange, '', '')
+call s:SetHighlight('TSAnnotation', s:yellow, '', '')
+call s:SetHighlight('TSAttribute', s:yellow, '', '')
+call s:SetHighlight('TSNamespace', s:yellow, '', '')
 
 
 " Functions
 call s:SetHighlight('TSFuncBuiltin', s:purple, '', 'bold,italic')
 call s:SetHighlight('TSFunction', s:yellow, '', 'bold')
 call s:SetHighlight('TSFuncMacro', s:purple, '', '')
-call s:SetHighlight('TSParameter', s:orange, '', 'italic')
+call s:SetHighlight('TSParameter', s:blue, '', 'italic')
 call s:SetHighlight('TSParameterReference', s:blue, '', '')
 call s:SetHighlight('TSMethod', s:light_green, '', 'bold,italic')
 call s:SetHighlight('TSField', s:orange, '', 'italic')
-call s:SetHighlight('TSProperty', s:yellow, '', 'bold')
+call s:SetHighlight('TSProperty', s:pink, '', 'bold')
 call s:SetHighlight('TSConstructor', s:light_red, '', 'bold')
 
 " Keywords
-call s:SetHighlight('TSConditional', s:orange, '', 'italic')
-call s:SetHighlight('TSRepeat', s:orange, '', 'italic')
+call s:SetHighlight('TSConditional', s:purple, '', 'italic')
+call s:SetHighlight('TSRepeat', s:purple, '', 'italic')
 call s:SetHighlight('TSLabel', s:green, '', '')
 call s:SetHighlight('TSKeyword', s:purple, '', 'italic')
 call s:SetHighlight('TSKeywordFunction', s:purple, '', 'italic')
 call s:SetHighlight('TSKeywordOperator', s:yellow, '', 'bold')
-call s:SetHighlight('TSOperator', s:orange, '', '')
+call s:SetHighlight('TSOperator', s:lime, '', '')
 call s:SetHighlight('TSException', s:orange, '', '')
 call s:SetHighlight('TSType', s:light_yellow, '', '')
 call s:SetHighlight('TSTypeBuiltin', s:blue, '', 'bold')
@@ -251,13 +294,13 @@ call s:SetHighlight('TSStructure', s:yellow, '', '')
 call s:SetHighlight('TSInclude', s:red, '', 'bold')
 
 " Variable
-call s:SetHighlight('TSVariable', s:white, '', '')
+call s:SetHighlight('TSVariable', s:fg, '', '')
 call s:SetHighlight('TSVariableBuiltin', s:red, '', 'bold,italic')
 
 " Text
-call s:SetHighlight('TSText', s:white, '', '')
-call s:SetHighlight('TSStrong', s:white, '', 'bold')
-call s:SetHighlight('TSEmphasis', s:white, '', '')
+call s:SetHighlight('TSText', s:fg, '', '')
+call s:SetHighlight('TSStrong', s:fg, '', 'bold')
+call s:SetHighlight('TSEmphasis', s:fg, '', '')
 call s:SetHighlight('TSUnderline', s:pink, '', '')
 call s:SetHighlight('TSTitle', s:pink, '', '')
 call s:SetHighlight('TSLiteral', s:pink, '', '')

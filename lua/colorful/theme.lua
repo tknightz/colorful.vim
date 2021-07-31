@@ -29,7 +29,7 @@ theme.loadSyntax = function ()
 		Delimiter           = { fg = colors.cyan }, -- character that needs attention like , or .
 		SpecialComment      = { fg = colors.gray }, -- special things inside a comment
 		Debug               = { fg = colors.red }, -- debugging statements
-		Underlined          = { fg = colors.pink, bg = colors.none, style = 'underline' }, -- text that stands out, HTML links
+		Underlined          = { fg = colors.light_red, bg = colors.none, style = 'underline' }, -- text that stands out, HTML links
 
 		Ignore              = { fg = colors.gray }, -- left blank, hidden
 		Error               = { fg = colors.error, bg = colors.none, style = 'bold,underline' }, -- any erroneous construct
@@ -55,15 +55,11 @@ end
 theme.loadEditor = function ()
   local editor = {
     ColorColumn      = { bg = colors.invisibles },
-    Cursor           = { fg = colors.bg, bg = colors.caret },
+    Cursor           = { fg = colors.bg, bg = colors.caret, style = 'reverse' },
     CursorColumn     = { bg = colors.line_highlight },
-    CursorLine       = { bg = colors.line_highlight },
+    CursorLine       = { fg = colors.none, bg = colors.line_highlight },
     CursorLineNr     = { fg = colors.yellow },
     Directory        = { fg = colors.blue },
-
-    gitDiffAdd       = { fg = colors.green, bg = colors.bg },
-    gitDiffDelete    = { fg = colors.red, bg = colors.bg },
-    gitDiffChange    = { fg = colors.yellow, bg = colors.bg },
 
     DiffAdd          = { fg = colors.bg, bg = colors.dark_green },
     DiffDelete       = { fg = colors.fg, bg = colors.dark_red },
@@ -71,14 +67,14 @@ theme.loadEditor = function ()
     DiffText         = { fg = colors.bg, bg = colors.orange },
 
     ErrorMsg         = { fg = colors.bg, bg = colors.red, style = 'bold'},
-    FoldColumn       = { fg = colors.line_numbers, bg = colors.bg },
-    Folded           = { fg = colors.brown, bg = colors.bg, style = 'bold'},
+    FoldColumn       = { fg = colors.line_numbers },
+    Folded           = { fg = colors.comments, style = 'bold'},
     LineNr           = { fg = colors.line_numbers },
     MatchParen       = { fg = colors.orange, style = 'bold'},
     ModeMsg          = { fg = colors.green },
     MoreMsg          = { fg = colors.green },
     NonText          = { fg = colors.comments },
-    Normal           = { fg = colors.fg, bg = colors.bg },
+    Normal           = { fg = colors.fg, bg = colors.none },
     Pmenu            = { fg = colors.fg, bg = colors.selection },
     PmenuSel         = { fg = colors.pmenusel_fg, bg = colors.pmenusel_bg },
     PmenuSbar        = { bg = colors.selection },
@@ -86,7 +82,7 @@ theme.loadEditor = function ()
     Question         = { fg = colors.blue },
     IncSearch        = { fg = colors.white, bg = colors.red, style = 'none'},
     Search           = { fg = colors.white, bg = colors.red, style = 'none'},
-    SignColumn       = { fg = colors.fg, bg = colors.bg },
+    SignColumn       = { fg = colors.fg },
     SpecialKey       = { fg = colors.comments },
     SpellCap         = { fg = colors.blue, style = 'undercurl'},
     SpellBad         = { fg = colors.red, style = 'undercurl'},
@@ -103,7 +99,7 @@ theme.loadEditor = function ()
     WarningMsg       = { fg = colors.red },
     WildMenu         = { fg = colors.bg, bg = colors.cyan },
 
-    NormalFloat      = { fg = colors.fg, bg = colors.bg }, -- normal text and background color for floating windows
+    NormalFloat      = { fg = colors.fg }, -- normal text and background color for floating windows
 		Conceal          = { fg = colors.disabled }, -- placeholder characters substituted for concealed text (see 'conceallevel')
 		CursorIM         = { fg = colors.cursor, bg = colors.none, style = 'reverse' }, -- like Cursor, but used when in IME mode
 
@@ -129,7 +125,7 @@ theme.loadEditor = function ()
   return editor
 end
 
-theme.loadTreesitter = function()
+theme.loadTreeSitter = function()
   local treesitter = {
     TSError = { fg = colors.red },
     TSPunctDelimiter = { fg = colors.fg },
@@ -137,6 +133,7 @@ theme.loadTreesitter = function()
     TSPunctSpecial = { fg = colors.yellow, style = 'bold' },
 
     TSConstant = { fg = colors.orange },
+    TSComment = { fg = colors.comments, style = 'italic' },
     TSConstBuiltin = { fg = colors.red, style = 'bold' },
     TSConstMacro = { fg = colors.green },
     TSString = { fg = colors.green },
@@ -157,7 +154,7 @@ theme.loadTreesitter = function()
     TSParameterReference = { fg = colors.blue },
     TSMethod = { fg = colors.light_green, style = 'bold,italic' },
     TSField = { fg = colors.orange, style = 'italic' },
-    TSProperty = { fg = colors.pink, style = 'bold' },
+    TSProperty = { fg = colors.light_red, style = 'bold' },
     TSConstructor = { fg = colors.light_red, style = 'bold' },
 
     TSConditional = { fg = colors.purple, style = 'italic' },
@@ -179,10 +176,10 @@ theme.loadTreesitter = function()
     TSText = { fg = colors.fg },
     TSStrong = { fg = colors.fg, style = 'bold' },
     TSEmphasis = { fg = colors.fg },
-    TSUnderline = { fg = colors.pink },
-    TSTitle = { fg = colors.pink },
-    TSLiteral = { fg = colors.pink },
-    TSURI = { fg = colors.pink },
+    TSUnderline = { fg = colors.light_red },
+    TSTitle = { fg = colors.light_red },
+    TSLiteral = { fg = colors.light_red },
+    TSURI = { fg = colors.light_red },
 
     TSTag = { fg = colors.blue },
     TSTagDelimiter = { fg = colors.grey },
@@ -215,17 +212,26 @@ theme.loadPlugins = function ()
     gitcommitSelectedType = { fg = colors.green },
     gitcommitSummary = { fg = colors.blue },
     gitcommitDiscardedType = { fg = colors.red },
-    gitDiffAdd = { fg = colors.green, bg = colors.bg },
-    gitDiffDelete = { fg = colors.red, bg = colors.bg },
-    gitDiffChange = { fg = colors.yellow, bg = colors.bg },
+    gitDiffAdd = { fg = colors.light_green },
+    gitDiffDelete = { fg = colors.red },
+    gitDiffChange = { fg = colors.yellow },
 
 
-    NvimTreeNormal = { bg = colors.black },
+    NvimTreeNormal = { bg = colors.slidebar_bg },
     NvimTreeFolderName = { fg = colors.cyan },
     NvimTreeRootFolder = { fg = colors.green },
     NvimTreeFolderIcon = { fg = colors.orange },
-    NvimTreeEmptyFolderName = { fg = colors.grey },
+
+    NvimTreeEmptyFolderName = { fg = colors.gray },
     NvimTreeOpenedFolderName = { fg = colors.yellow },
+
+    NvimTreeGitDirty = { fg = colors.red },
+    NvimTreeGitStaged = { fg = colors.green },
+    NvimTreeGitMerge = { fg = colors.dark_green },
+    NvimTreeGitRenamed = { fg = colors.orange },
+    NvimTreeGitNew = { fg = colors.yellow },
+    NvimTreeGitDeleted = { fg = colors.dark_red },
+    NvimTreeOpenedFile = { fg = colors.green, style = 'none' }
   }
 
   return plugins

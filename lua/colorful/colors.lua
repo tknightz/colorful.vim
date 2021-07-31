@@ -17,6 +17,9 @@ local colors = {
   guides = '#37474f',
   line_numbers = '#37474f',
   line_highlight = '#27343a',
+  pmenusel_fg = '#121212',
+  pmenusel_bg = '#67d745',
+  slidebar_bg = '#181919',
 
   white = '#ffffff',
   black = '#000000',
@@ -26,8 +29,9 @@ local colors = {
   red = '#FF3D40',
   dark_red = '#e20000',
 
-  light_orange = '#ff8e0c',
-  orange = '#c96f00',
+  -- orange group
+  light_orange = '#FFB219',
+  orange = '#ff8e0c',
   darkest_orange = '#925000',
 
   -- yellow group

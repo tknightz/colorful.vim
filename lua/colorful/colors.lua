@@ -32,7 +32,7 @@ local colors = {
   -- orange group
   light_orange = '#FFB219',
   orange = '#ff8e0c',
-  darkest_orange = '#925000',
+  dark_orange = '#925000',
 
   -- yellow group
   light_yellow = '#fff672',

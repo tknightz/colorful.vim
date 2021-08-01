@@ -27,6 +27,7 @@ theme.loadSyntax = function ()
 		SpecialChar         = { fg = colors.yellow }, -- special character in a constant
 		Tag                 = { fg = colors.blue }, -- you can use CTRL-] on this
 		Delimiter           = { fg = colors.cyan }, -- character that needs attention like , or .
+		Comment             = { fg = colors.gray, style = 'italic' },
 		SpecialComment      = { fg = colors.gray }, -- special things inside a comment
 		Debug               = { fg = colors.red }, -- debugging statements
 		Underlined          = { fg = colors.light_red, bg = colors.none, style = 'underline' }, -- text that stands out, HTML links
@@ -55,7 +56,7 @@ end
 theme.loadEditor = function ()
   local editor = {
     ColorColumn      = { bg = colors.invisibles },
-    Cursor           = { fg = colors.bg, bg = colors.caret, style = 'reverse' },
+    Cursor           = { fg = colors.bg, bg = colors.caret },
     CursorColumn     = { bg = colors.line_highlight },
     CursorLine       = { fg = colors.none, bg = colors.line_highlight },
     CursorLineNr     = { fg = colors.yellow },
@@ -66,11 +67,11 @@ theme.loadEditor = function ()
     DiffChange       = { fg = colors.bg, bg = colors.dark_orange },
     DiffText         = { fg = colors.bg, bg = colors.orange },
 
-    ErrorMsg         = { fg = colors.bg, bg = colors.red, style = 'bold'},
+    ErrorMsg         = { fg = colors.red, bg = colors.none, style = 'bold'},
     FoldColumn       = { fg = colors.line_numbers },
     Folded           = { fg = colors.comments, style = 'bold'},
     LineNr           = { fg = colors.line_numbers },
-    MatchParen       = { fg = colors.orange, style = 'bold'},
+    MatchParen       = { fg = colors.green, style = 'bold'},
     ModeMsg          = { fg = colors.green },
     MoreMsg          = { fg = colors.green },
     NonText          = { fg = colors.comments },
@@ -99,7 +100,7 @@ theme.loadEditor = function ()
     WarningMsg       = { fg = colors.red },
     WildMenu         = { fg = colors.bg, bg = colors.cyan },
 
-    NormalFloat      = { fg = colors.fg }, -- normal text and background color for floating windows
+    NormalFloat      = { bg = colors.selection }, -- normal text and background color for floating windows
 		Conceal          = { fg = colors.disabled }, -- placeholder characters substituted for concealed text (see 'conceallevel')
 		CursorIM         = { fg = colors.cursor, bg = colors.none, style = 'reverse' }, -- like Cursor, but used when in IME mode
 
@@ -192,14 +193,18 @@ end
 
 theme.loadPlugins = function ()
   local plugins = {
-    LspDiagnosticsVirtualTextError = { fg = colors.dark_red, style = 'bold,italic' },
-    LspDiagnosticsVirtualTextWarning = { fg = colors.dark_orange, style = 'bold,italic' },
-    LspDiagnosticsVirtualTextInformation = { fg = colors.dark_blue, style = 'bold,italic' },
-    LspDiagnosticsVirtualTextHint = { fg = colors.dark_cyan, style = 'bold,italic' },
-    LspDiagnosticsDefaultError = { fg = colors.dark_red },
-    LspDiagnosticsDefaultWarning = { fg = colors.orange },
-    LspDiagnosticsDefaultInformation = { fg = colors.blue },
-    LspDiagnosticsDefaultHint = { fg = colors.cyan },
+    LspDiagnosticsVirtualTextError = { fg = colors.dark_red, bg = colors.none, style = 'bold,italic' },
+    LspDiagnosticsVirtualTextWarning = { fg = colors.dark_orange, bg = colors.none, style = 'bold,italic' },
+    LspDiagnosticsVirtualTextInformation = { fg = colors.dark_blue, bg = colors.none, style = 'bold,italic' },
+    LspDiagnosticsVirtualTextHint = { fg = colors.dark_cyan, bg = colors.none, style = 'bold,italic' },
+    LspDiagnosticsDefaultError = { fg = colors.dark_red, bg = colors.none },
+    LspDiagnosticsDefaultWarning = { fg = colors.orange, bg = colors.none },
+    LspDiagnosticsDefaultInformation = { fg = colors.blue, bg = colors.none },
+    LspDiagnosticsDefaultHint = { fg = colors.cyan, bg = colors.none },
+    LspDiagnosticsUnderlineError = { fg = colors.dark_red, bg = colors.none, style = 'undercurl' },
+    LspDiagnosticsUnderlineWarning = { fg = colors.dark_orange, bg = colors.none, style = 'undercurl' },
+    LspDiagnosticsUnderlineInformation = { fg = colors.dark_blue, bg = colors.none, style = 'undercurl' },
+    LspDiagnosticsUnderlineHint = { fg = colors.dark_cyan, bg = colors.none, style = 'undercurl' },
 
     gitcommitHeader = { fg = colors.purple },
     gitcommitUnmerged = { fg = colors.green },
@@ -221,20 +226,46 @@ theme.loadPlugins = function ()
     NvimTreeFolderName = { fg = colors.cyan },
     NvimTreeRootFolder = { fg = colors.green },
     NvimTreeFolderIcon = { fg = colors.orange },
-
     NvimTreeEmptyFolderName = { fg = colors.gray },
     NvimTreeOpenedFolderName = { fg = colors.yellow },
-
     NvimTreeGitDirty = { fg = colors.red },
     NvimTreeGitStaged = { fg = colors.green },
     NvimTreeGitMerge = { fg = colors.dark_green },
     NvimTreeGitRenamed = { fg = colors.orange },
     NvimTreeGitNew = { fg = colors.yellow },
     NvimTreeGitDeleted = { fg = colors.dark_red },
-    NvimTreeOpenedFile = { fg = colors.green, style = 'none' }
+    NvimTreeOpenedFile = { fg = colors.green, style = 'none' },
+
+    WhichKeyValue         = { fg = colors.orange },
+    WhichKeySeperator     = { fg = colors.cyan },
+    WhichKeyGroup         = { fg = colors.blue },
+    WhichKeyFloat         = { bg = colors.slidebar_bg },
+    WhichKeyDesc          = { fg = colors.green },
+    WhichKey              = { fg = colors.orange },
   }
 
   return plugins
+end
+
+theme.loadTerminal = function ()
+  vim.g.terminal_color_background = colors.slidebar_bg
+  vim.g.terminal_color_foreground = colors.fg
+  vim.g.terminal_color_0 = colors.comments
+  vim.g.terminal_color_1 = colors.red
+  vim.g.terminal_color_2 = colors.green
+  vim.g.terminal_color_3 = colors.yellow
+  vim.g.terminal_color_4 = colors.blue
+  vim.g.terminal_color_5 = colors.purple
+  vim.g.terminal_color_6 = colors.cyan
+  vim.g.terminal_color_7 = colors.white
+  vim.g.terminal_color_8 = vim.g.terminal_color_0
+  vim.g.terminal_color_9 = vim.g.terminal_color_1
+  vim.g.terminal_color_10 = vim.g.terminal_color_2
+  vim.g.terminal_color_11 = vim.g.terminal_color_3
+  vim.g.terminal_color_12 = vim.g.terminal_color_4
+  vim.g.terminal_color_13 = vim.g.terminal_color_5
+  vim.g.terminal_color_14 = vim.g.terminal_color_6
+  vim.g.terminal_color_15 = vim.g.terminal_color_7
 end
 
 return theme

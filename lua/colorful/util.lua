@@ -27,6 +27,7 @@ function util.load()
     local syntax = colorful.loadSyntax()
     local treesitter = colorful.loadTreeSitter()
     local plugins = colorful.loadPlugins()
+    colorful.loadTerminal()
 
     for group, colors in pairs(editor) do
         util.highlight(group, colors)

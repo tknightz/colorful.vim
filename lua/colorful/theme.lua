@@ -244,6 +244,10 @@ theme.loadPlugins = function ()
 		WhichKeyFloat         = { bg = colors.slidebar_bg },
 		WhichKeyDesc          = { fg = colors.green },
 		WhichKey              = { fg = colors.orange },
+
+		CmpItemAbbr = { fg = colors.invisibles },
+		CmpItemKind = { fg = colors.light_green },
+		CmpItemMenu = { fg = colors.green },
 	}
 
 	return plugins

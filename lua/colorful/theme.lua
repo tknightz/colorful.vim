@@ -245,7 +245,8 @@ theme.loadPlugins = function ()
 		WhichKeyDesc          = { fg = colors.green },
 		WhichKey              = { fg = colors.orange },
 
-		CmpItemAbbr = { fg = colors.invisibles },
+		CmpItemAbbr = { fg = colors.fg },
+		CmpItemAbbrMatch = { style = "underline" },
 		CmpItemKind = { fg = colors.light_green },
 		CmpItemMenu = { fg = colors.green },
 	}

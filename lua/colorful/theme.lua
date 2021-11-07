@@ -157,7 +157,7 @@ theme.loadTreeSitter = function()
 		TSMethod = { fg = colors.light_green, style = 'bold,italic' },
 		TSField = { fg = colors.orange, style = 'italic' },
 		TSProperty = { fg = colors.light_red, style = 'bold' },
-		TSConstructor = { fg = colors.blue, style = 'bold' },
+		TSConstructor = { fg = colors.light_red, style = 'bold' },
 
 		TSConditional = { fg = colors.cyan, style = 'italic' },
 		TSRepeat = { fg = colors.purple, style = 'italic' },

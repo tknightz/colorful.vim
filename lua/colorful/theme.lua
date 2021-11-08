@@ -63,10 +63,10 @@ theme.loadEditor = function ()
 		Directory        = { fg = colors.blue },
 		EndOfBuffer      = { fg = colors.bg },
 
-		DiffAdd          = { fg = colors.light_green, bg = colors.none },
-		DiffDelete       = { fg = colors.red, bg = colors.none },
-		DiffChange       = { fg = colors.light_orange, bg = colors.none },
-		DiffText         = { fg = colors.fg, bg = colors.none },
+		DiffAdd          = { bg = colors.light_green, fg = colors.black },
+		DiffDelete       = { bg = colors.red, fg = colors.black },
+		DiffChange       = { bg = colors.NONE },
+		DiffText         = { bg = colors.light_orange, fg = colors.black },
 
 		ErrorMsg         = { fg = colors.red, bg = colors.none, style = 'bold'},
 		FoldColumn       = { fg = colors.line_numbers },
@@ -221,8 +221,11 @@ theme.loadPlugins = function ()
 		gitcommitDiscardedType = { fg = colors.red },
 		gitDiffAdd = { fg = colors.light_green },
 		gitDiffDelete = { fg = colors.red },
-		gitDiffChange = { fg = colors.yellow },
+		gitDiffChange = { fg = colors.light_orange },
 
+		gitSignsAdd = { fg = colors.light_green, bg = colors.NONE },
+		gitSignsChange = { fg = colors.light_orange, bg = colors.NONE },
+		gitSignsDelete = { fg = colors.red, bg = colors.NONE },
 
 		NvimTreeNormal = { bg = colors.slidebar_bg },
 		NvimTreeFolderName = { fg = colors.cyan },

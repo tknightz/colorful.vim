@@ -65,7 +65,7 @@ theme.loadEditor = function ()
 
 		DiffAdd          = { bg = colors.light_green, fg = colors.black },
 		DiffDelete       = { bg = colors.red, fg = colors.black },
-		DiffChange       = { bg = colors.NONE },
+		DiffChange       = { bg = colors.none },
 		DiffText         = { bg = colors.light_orange, fg = colors.black },
 
 		ErrorMsg         = { fg = colors.red, bg = colors.none, style = 'bold'},
@@ -180,7 +180,7 @@ theme.loadTreeSitter = function()
 		TSEmphasis = { fg = colors.fg },
 		TSUnderline = { fg = colors.light_red },
 		TSTitle = { fg = colors.light_red },
-		TSLiteral = { fg = colors.light_red },
+		TSLiteral = { fg = colors.text },
 		TSURI = { fg = colors.light_red },
 
 		TSTag = { fg = colors.blue },
@@ -252,6 +252,9 @@ theme.loadPlugins = function ()
 		CmpItemAbbrMatch = { style = "underline" },
 		CmpItemKind = { fg = colors.light_green },
 		CmpItemMenu = { fg = colors.green },
+
+		rstTSConstant = { fg = colors.light_orange },
+		rstTSPunctSpecial = { fg = colors.border }
 	}
 
 	return plugins

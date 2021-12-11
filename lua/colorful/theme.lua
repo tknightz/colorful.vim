@@ -54,7 +54,7 @@ theme.loadSyntax = function ()
 end
 
 theme.loadEditor = function ()
-	local editor       = {
+	local editor = {
 		ColorColumn      = { bg = colors.none },
 		Cursor           = { fg = colors.bg, bg = colors.caret },
 		CursorColumn     = { bg = colors.line_highlight },
@@ -67,6 +67,11 @@ theme.loadEditor = function ()
 		DiffDelete       = { bg = colors.red, fg = colors.black },
 		DiffChange       = { bg = colors.none },
 		DiffText         = { bg = colors.light_orange, fg = colors.black },
+
+		diffOldFile      = { fg = colors.dark_blue },
+		diffNewFile      = { fg = colors.blue },
+		diffRemoved      = { fg = colors.red },
+		diffAdded        = { fg = colors.light_green },
 
 		ErrorMsg         = { fg = colors.red, bg = colors.none, style = 'bold'},
 		FoldColumn       = { fg = colors.line_numbers },
@@ -254,7 +259,16 @@ theme.loadPlugins = function ()
 		CmpItemMenu       = { fg = colors.green },
 
 		rstTSConstant     = { fg = colors.light_orange },
-		rstTSPunctSpecial = { fg = colors.border }
+		rstTSPunctSpecial = { fg = colors.border },
+
+		MundoCurrentLocation = { fg = colors.light_green },
+		MundoNumber          = { fg = colors.orange },
+
+		TelescopePromptBorder = { fg = colors.light_green },
+		TelescopeResultsBorder = { fg = colors.purple },
+		TelescopePreviewBorder = { fg = colors.orange },
+		TelescopeSelection = { bg = colors.selection, style = 'bold'}
+
 	}
 
 	return plugins

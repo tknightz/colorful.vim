@@ -59,6 +59,7 @@ local colors = {
 	purple         = '#FA7FF0',
 	brown          = '#d16d60',
 	violet         = '#f448eb',
+  dark_violet    = '#541B6A',
 	gray           = '#546e7a',
 }
 

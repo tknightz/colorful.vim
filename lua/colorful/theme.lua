@@ -102,7 +102,7 @@ theme.loadEditor = function ()
 		TabLineSel       = { fg = colors.bg, bg = colors.dark_green },
 		Title            = { fg = colors.green },
 		VertSplit        = { fg = colors.comments },
-		Visual           = { fg = colors.fg, bg = colors.selection },
+		Visual           = { fg = colors.none, bg = colors.dark_violet },
 		WarningMsg       = { fg = colors.red },
 		WildMenu         = { fg = colors.bg, bg = colors.cyan },
 
@@ -124,7 +124,7 @@ theme.loadEditor = function ()
 		NormalMode       = { fg = colors.accent, bg = colors.none, style = 'reverse' }, -- Normal mode message in the cmdline
 		InsertMode       = { fg = colors.green, bg = colors.none, style = 'reverse' }, -- Insert mode message in the cmdline
 		ReplacelMode     = { fg = colors.red, bg = colors.none, style = 'reverse' }, -- Replace mode message in the cmdline
-		VisualMode       = { fg = colors.purple, bg = colors.none, style = 'reverse' }, -- Visual mode message in the cmdline
+		VisualMode       = { fg = colors.none, bg = colors.dark_violet, style = 'reverse' }, -- Visual mode message in the cmdline
 		CommandMode      = { fg = colors.gray, bg = colors.none, style = 'reverse' }, -- Command mode message in the cmdline
 		Warnings         = { fg = colors.orange },
 	}

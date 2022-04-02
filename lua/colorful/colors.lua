@@ -27,7 +27,7 @@ local colors = {
 	-- red group
 	light_red      = '#ff7e7e',
 	red            = '#FF3D40',
-	dark_red       = '#e20000',
+	dark_red       = '#4D0622',
 
 	-- orange group
 	light_orange   = '#FFB219',
@@ -42,7 +42,7 @@ local colors = {
 	-- green group
 	light_green    = '#3eff7b',
 	green          = '#c3e88d',
-	dark_green     = '#67d745',
+	dark_green     = '#002800',
 
 	lime           = '#c6ff00',
 

@@ -63,10 +63,10 @@ theme.loadEditor = function ()
 		Directory        = { fg = colors.blue },
 		EndOfBuffer      = { fg = colors.bg },
 
-		DiffAdd          = { bg = colors.light_green, fg = colors.black },
-		DiffDelete       = { bg = colors.red, fg = colors.black },
-		DiffChange       = { bg = colors.none },
-		DiffText         = { bg = colors.light_orange, fg = colors.black },
+		DiffAdd          = { bg = colors.dark_green },
+		DiffDelete       = { bg = colors.dark_red },
+		DiffChange       = { bg = colors.dark_orange },
+		DiffText         = { bg = colors.orange },
 
 		diffOldFile      = { fg = colors.dark_blue },
 		diffNewFile      = { fg = colors.blue },
